@@ -41,7 +41,7 @@ model = api.model('model', {'title': fields.String('Enter title'),
 
 
 @api.route('/api/task/')
-class getlist_post(Resource):
+class Tasklist_сreatetask(Resource):
     def get(self):
         return jsonify(schema_list.dump(Task.select()))
 
@@ -53,7 +53,7 @@ class getlist_post(Resource):
 
 
 @api.route('/api/task/<int:id>/')
-class getabout_puttask_deletetask(Resource):
+class Abouttask_updatetask_removetask(Resource):
     def get(self, id):
         return jsonify(schema_about.dump(Task.get(id)))
 
@@ -65,7 +65,7 @@ class getabout_puttask_deletetask(Resource):
         task.save()
         return {'message': 'task updated'}
 
-    def delete(self,id):
+    def delete(self, id):
         task = Task.get(id)
         task.delete_instance()
         return {'message': 'task deleted'}
